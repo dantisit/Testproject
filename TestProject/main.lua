@@ -10,8 +10,8 @@ function love.load()
     GameMap = sti('Maps/TestMap..lua')
 
     player = {}
-    player.collider = world:newBSGRectangleCollider(400, 250, 20, 20, 0)
-    player.collider:setFixedRotation(true)
+    player.collider = world:newBSGRectangleCollider(400, 250, 22, 34, 0)
+    player.collider:setFixedRotation(true)  
     player.x = 400
     player.y = 250
     player.speed = 100
@@ -46,21 +46,21 @@ function love.update(dt)
 
     world:update(dt)
     
-    player.x = player.collider:getX() 
-    player.y = player.collider:getY()
+    player.x = player.collider:getX() - 11
+    player.y = player.collider:getY() - 17
 end
 
 function love.draw()
 
     camera:attach()
         GameMap:drawLayer(GameMap.layers["Слой тайлов 1"]) 
-        love.graphics.draw(player.sprite, player.x, player.y,nil,-0.1) 
+        love.graphics.draw(player.sprite, player.x, player.y,nil,0.1) 
         world:draw()
     camera:detach()
     
-    love.graphics.print(player.x,200,100)
-    love.graphics.print(player.y,400,100)
+    --love.graphics.print(player.x,200,100)
+    --love.graphics.print(player.y,400,100)
 
-    love.graphics.print(player.collider:getX(),200,200)
-    love.graphics.print(player.collider:getY(),400,200)
+    --love.graphics.print(player.collider:getX(),200,200)
+    --love.graphics.print(player.collider:getY(),400,200)
 end
